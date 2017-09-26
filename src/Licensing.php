@@ -138,6 +138,9 @@ class Licensing
 	{
 		if ($this->verifyLicense($licensePath, $publicKeyPath)) {
 			$license = json_decode(base64_decode(file_get_contents($licensePath)));
+			if (!$license) {
+				return;
+			}
 
 			return json_decode($license->data, true);
 		}
