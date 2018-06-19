@@ -142,7 +142,10 @@ class Licensing
 				return;
 			}
 
-			return json_decode($license->data, true);
+			$data = json_decode($license->data, true);
+			if (is_array($data)) {
+				return $data;
+			}
 		}
 	}
 
